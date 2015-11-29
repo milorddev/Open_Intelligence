@@ -12,10 +12,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ClassCreator.cpp" />
+    <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Inherit.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{999E0E57-AD57-4820-92FC-2621FDF61495}</ProjectGuid>
     <RootNamespace>Open_Intelligence</RootNamespace>
+    <ProjectName>MemLayer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

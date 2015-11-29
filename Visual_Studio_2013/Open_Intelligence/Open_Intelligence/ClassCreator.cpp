@@ -5,9 +5,9 @@
 
 using namespace std;
 
-void MakeClass(string name);
+void MakeClass(string name, string inherit);
 
-void main()
+void CreateClass()
 {
 	string ClassName;
 	bool isInMemory = false;
@@ -17,29 +17,37 @@ void main()
 
 	ifstream file;
 	file.open("MemList.txt");
-	while (!file.eof())
+	if (file.is_open())
 	{
-		string temp;
-		getline(file, temp);
-		std::size_t found = temp.find(ClassName);
-		if (found != std::string::npos)
+		while (!file.eof())
 		{
-			cout << "Already in memory" << endl;
-			isInMemory = true;
-		}	
+			string temp;
+			getline(file, temp);
+			std::size_t found = temp.find(ClassName);
+			if (found != std::string::npos)
+			{
+				cout << "Already in memory" << endl;
+				isInMemory = true;
+			}
+		}
 	}
-
+	else
+	{
+		cout << "MemList not found!" << endl;
+	}
 	if (!isInMemory)
 	{
-		MakeClass(ClassName);
+		string inherit;
+		cout << "What to Inherit?: ";
+		cin >> inherit;
+		MakeClass(ClassName, inherit);
 	}
 
 
-	system("PAUSE");
 
 }
 
-void MakeClass(string name)
+void MakeClass(string name, string inherit)
 {
 	ofstream file;
 
@@ -50,14 +58,38 @@ void MakeClass(string name)
 		UpperName += toupper(name[i], loc);
 	}
 	
-	string temp = name + ".h";
+	
 
+	//Adds class to memoryfile & adds inherit number to it
+	ifstream readfile;
+	int CurrentLine = 0;
+	readfile.open("MemList.txt"); // , ios::ate | ios::app);
+	if (readfile.is_open())
+	{
+		string line;
+		while (getline(readfile, line))
+		{
+			CurrentLine += 1;
+		}
+	}
+	cout << "Count is: " << CurrentLine << endl;
+	readfile.close();
+
+	file.open("MemList.txt", ios::ate | ios::app);
+	if (file.is_open())
+	{
+		file << CurrentLine << " " << name << endl;
+		file.close();
+	}
+
+
+	string temp = name + ".h";
 	file.open(temp);	
 	if (file.is_open())
 	{
 		// Creates the bare bones class structure for "Name" in header file
 		file << "#ifndef " << UpperName << "_H" << endl;
-		file << "define " << UpperName << "_H" << endl;
+		file << "#define " << UpperName << "_H" << endl;
 		file << endl << endl;
 		file << "class " << name << endl << "{" << endl;
 		file << "public:" << endl << endl << "private:" << endl << endl << "};" << endl << endl << "#endif" << endl;
@@ -76,10 +108,7 @@ void MakeClass(string name)
 		file.close();
 	}
 	
-	file.open("MemList.txt",ios::ate | ios::app);
-	if (file.is_open())
-	{
-		file << name << endl;
-	}
-	cout << "Class made!" << endl;
+	
 }
+
+
