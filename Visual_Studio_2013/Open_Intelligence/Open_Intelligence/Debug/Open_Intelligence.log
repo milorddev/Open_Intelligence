@@ -1,18 +1,18 @@
-﻿Build started 11/28/2015 1:54:00 PM.
-     1>Project "C:\OpenIntelligence\Open_Intelligence\Visual_Studio_2013\Open_Intelligence\Open_Intelligence\Open_Intelligence.vcxproj" on node 2 (Rebuild target(s)).
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Core.vcxproj, Open_Intelligence.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+﻿Build started 1/2/2016 9:09:45 PM.
+     1>Project "D:\Open_Intelligence\Open_Intelligence\Visual_Studio_2013\Open_Intelligence\Open_Intelligence\Open_Intelligence.vcxproj" on node 2 (Rebuild target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Core.vcxproj, Open_Intelligence.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ClassCreator.cpp Source.cpp
          Source.cpp
          ClassCreator.cpp
-     1>c:\openintelligence\open_intelligence\visual_studio_2013\open_intelligence\open_intelligence\classcreator.cpp(56): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\open_intelligence\open_intelligence\visual_studio_2013\open_intelligence\open_intelligence\classcreator.cpp(56): warning C4018: '<' : signed/unsigned mismatch
          Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\OpenIntelligence\Open_Intelligence\Visual_Studio_2013\Open_Intelligence\Debug\MemLayer.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\OpenIntelligence\Open_Intelligence\Visual_Studio_2013\Open_Intelligence\Debug\MemLayer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\OpenIntelligence\Open_Intelligence\Visual_Studio_2013\Open_Intelligence\Debug\MemLayer.lib" /MACHINE:X86 Debug\ClassCreator.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Open_Intelligence\Open_Intelligence\Visual_Studio_2013\Open_Intelligence\Debug\MemLayer.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Open_Intelligence\Open_Intelligence\Visual_Studio_2013\Open_Intelligence\Debug\MemLayer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Open_Intelligence\Open_Intelligence\Visual_Studio_2013\Open_Intelligence\Debug\MemLayer.lib" /MACHINE:X86 Debug\ClassCreator.obj
          Debug\Source.obj
-         Open_Intelligence.vcxproj -> C:\OpenIntelligence\Open_Intelligence\Visual_Studio_2013\Open_Intelligence\Debug\MemLayer.exe
-     1>Done Building Project "C:\OpenIntelligence\Open_Intelligence\Visual_Studio_2013\Open_Intelligence\Open_Intelligence\Open_Intelligence.vcxproj" (Rebuild target(s)).
+         Open_Intelligence.vcxproj -> D:\Open_Intelligence\Open_Intelligence\Visual_Studio_2013\Open_Intelligence\Debug\MemLayer.exe
+     1>Done Building Project "D:\Open_Intelligence\Open_Intelligence\Visual_Studio_2013\Open_Intelligence\Open_Intelligence\Open_Intelligence.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.12
+Time Elapsed 00:00:00.93
