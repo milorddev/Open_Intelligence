@@ -44,9 +44,11 @@ else:
     rval = False
 
 
+boundaries = [(100,200)];
 
-
-
+IncrimentFrame = BlendFrame/BlendFrame
+RoundFrame = BlendFrame/BlendFrame
+Round2Frame = BlendFrame/BlendFrame
 
 while rval:
     rval, frame = vc.read()
@@ -69,11 +71,31 @@ while rval:
 
     BlendFrame = cv2.addWeighted(greyframe,0.5,edges,0.5,0);
     
+    #print BlendFrame[1,1];
 
+    #mask = BlendFrame;
+    
+    
+    
+    for (lower, upper) in boundaries:
+        lower = np.array(lower,dtype = "uint8")
+        upper = np.array(upper,dtype = "uint8")
 
+        mask = cv2.inRange(BlendFrame, lower, upper)
+
+        IncrimentFrame += mask/7;
+        IncrimentFrame *= mask/255;
+        RoundFrame = np.around(IncrimentFrame,-2)
+        RoundFrame *= 0.35;
+        Round2Frame = np.around(RoundFrame,-2);
+        Round2Frame *= 2;
+
+        print Round2Frame[20,20]
+       
+    MixFrame = cv2.addWeighted(greyframe,0.5,Round2Frame,1,0);
     
     cv2.imshow(WindowName, BlendSobel)    
-    cv2.imshow('GreyScale',BlendFrame);
+    cv2.imshow('GreyScale',mask);
     
    
 
@@ -82,6 +104,5 @@ while rval:
         
     
 vc.release()
-cv2.destroyWindow(WindowName)
-cv2.destroyWindow('GreyScale')
+cv2.destroyAllWindows()
 
