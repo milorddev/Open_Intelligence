@@ -47,12 +47,12 @@ while rval:
     
     thresh2=cv2.adaptiveThreshold(diffframe,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,11,2)
     
-    im2, contours, hierarchy = cv2.findContours(thresh2,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE);
+    #im2, contours, hierarchy = cv2.findContours(thresh2,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE);
 
-    DispFrame = cv2.drawContours(frame, contours, -1, (0,255,0), 3)
+    #DispFrame = cv2.drawContours(frame, contours, -1, (0,255,0), 3)
   
     cv2.imshow('Contours',thresh1);
-    cv2.imshow('Contours2',DispFrame);
+    cv2.imshow('Contours2',thresh2);
 
 
     
