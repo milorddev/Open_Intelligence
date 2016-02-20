@@ -1,7 +1,8 @@
 #include "../Headers/Node.h"
 
 
-Node::Node()
-{
 
+Node::Node(string Title)
+{
+	NodeName = Title;
 }

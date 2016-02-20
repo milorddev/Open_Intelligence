@@ -6,7 +6,7 @@ using namespace std;
 
 
 
-Node node;
+Node node("node");
 
 int main()
 {

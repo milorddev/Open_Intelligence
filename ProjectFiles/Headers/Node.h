@@ -2,13 +2,9 @@
 #define NODE_H
 
 #include <vector>
+#include <string>
 
-
-struct Listptr
-{
-	
-};
-
+using namespace std;
 
 
 class Node
@@ -17,7 +13,7 @@ class Node
 
 public:
 	//construtor
-	Node();
+	Node(string Title);
 
 
 	//inspector
@@ -27,7 +23,8 @@ public:
 
 
 private:
-	
+	vector<Node*> NodeList;
+	string NodeName;
 	bool isSearched;
 
 };
