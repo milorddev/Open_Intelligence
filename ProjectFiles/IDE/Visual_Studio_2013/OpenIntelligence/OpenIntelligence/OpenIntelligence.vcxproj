@@ -70,7 +70,9 @@
     <ClCompile Include="..\..\..\..\Source\Node.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Headers\LinuxPrePros.h" />
     <ClInclude Include="..\..\..\..\Headers\Node.h" />
+    <ClInclude Include="..\..\..\..\Headers\WinPrePros.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
