@@ -1,6 +1,12 @@
 #include <iostream>
+#include <vector>
+#include "../Headers/Node.h"
+
 using namespace std;
 
+
+
+Node node;
 
 int main()
 {
