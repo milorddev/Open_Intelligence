@@ -12,28 +12,27 @@ using namespace std;
 
 //prototypes
 void Commands(string cinresult);
+void GetCommand();
 
 //variables
-Node node("node");
+vector<Node> Nodes;
 string cinresult;
 bool EndLoop = false;
 
 
 
+
 int main()
 {
-	while (!EndLoop)
+	
+	/*while (!EndLoop)
 	{
-		cin >> cinresult;
+		getline(cin, cinresult);
 		Commands(cinresult);
-		
-
-	}
-	
-	
+	}*/
 
 
-
+	PrintFullPath("../../../../../Python/Eyesight/Primitive_Eyesight.py");
 
 
 
@@ -49,9 +48,24 @@ int main()
 
 void Commands(string cinresult)
 {
-	if (cinresult == "End")
+	if (cinresult == "End" || cinresult == "end")
 	{
 		EndLoop = true;
+	}
+	else if (cinresult == "Create Node" || cinresult == "create node")
+	{
+		string nodename;
+		cout << "Name of Node: ";
+		cin >> nodename;
+		Node temp(nodename);
+		Nodes.push_back(temp);
+		cout << "List of node names: ";
+		for (int i = 0; i < Nodes.size(); i++)
+		{
+			cout << Nodes[i].getName() << ", ";
+		}
+		cout << endl;
+		
 	}
 }
 

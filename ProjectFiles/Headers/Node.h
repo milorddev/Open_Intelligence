@@ -18,6 +18,7 @@ public:
 
 	//inspector
 
+	string getName();
 
 	//facilitator
 
