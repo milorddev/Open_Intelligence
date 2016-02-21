@@ -7,6 +7,15 @@
 using namespace std;
 
 
+struct Node
+{
+	vector<Node*> NodeList;
+	string NodeName;
+	bool isSearched;
+};
+
+
+/*
 class Node
 {
 
@@ -20,6 +29,7 @@ public:
 
 	string getName();
 
+	int get
 	//facilitator
 
 
@@ -30,7 +40,7 @@ private:
 
 };
 
-
+*/
 
 
 

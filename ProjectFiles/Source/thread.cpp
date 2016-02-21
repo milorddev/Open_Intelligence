@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void GetCommand();
+bool TurnOnVisuals = true;
 
 void VisualStream(bool EndInput)
 {
@@ -18,7 +18,8 @@ void VisualStream(bool EndInput)
 	{
 		while (!EndInput)
 		{
-			//cout << "Visual Input" << endl;
+			if (TurnOnVisuals)
+				cout << "Visual Input" << endl;
 			if (VisualFile.eof())
 			{
 				VisualFile.clear();
@@ -44,7 +45,8 @@ void AudioStream(bool EndInput)
 		while (!EndInput)
 		{
 			getline(SoundFile, soundline);
-			//cout << "Sound Input: " << soundline << endl;
+			if (TurnOnVisuals)
+				cout << "Sound Input: " << soundline << endl;
 			if (SoundFile.eof())
 			{
 				SoundFile.clear();
@@ -66,12 +68,12 @@ void StreamInputData(bool EndInput)
 {
 	thread Thread1(AudioStream,EndInput);
 	thread Thread2(VisualStream,EndInput);
-	thread Thread3(GetCommand);
+
 
 
 	Thread1.join();
 	Thread2.join();
-	Thread3.join();
+
 }
 
 

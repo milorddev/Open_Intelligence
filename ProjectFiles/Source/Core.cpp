@@ -9,6 +9,7 @@ using namespace std;
 #include <cstdio>
 #include <memory>
 #include <fstream>
+#include <thread>
 
 //prototypes
 void Commands(string cinresult);
@@ -47,7 +48,15 @@ int main(int argc, char *argv[])
 #endif
 
 
-	StreamInputData(EndLoop);
+	thread StreamThread(StreamInputData, EndLoop);
+	while (!EndLoop)
+	{
+		cout << flush;
+		getline(cin, cinresult);
+		Commands(cinresult);
+	}
+	StreamThread.join();
+
 
 
 
@@ -61,7 +70,7 @@ int main(int argc, char *argv[])
 
 void GetCommand()
 {
-	string cinresult;
+	
 	while (!EndLoop)
 	{
 		cin >> cinresult;
@@ -79,19 +88,45 @@ void Commands(string cinresult)
 	}
 	else if (cinresult == "Create Node" || cinresult == "create node")
 	{
-		string nodename;
+		string nname;
 		cout << "Name of Node: ";
-		cin >> nodename;
-		Node temp(nodename);
+		cin >> nname;
+		Node temp;
+		temp.NodeName = nname;
 		Nodes.push_back(temp);
 		cout << "List of node names: ";
 		for (int i = 0; i < Nodes.size(); i++)
 		{
-			cout << Nodes[i].getName() << ", ";
+			cout << Nodes[i].NodeName << ", ";
 		}
 		cout << endl;
-
 	}
+	/*else if (cinresult == "Add Link" || cinresult == "add link")
+	{
+		cout << "Start Node: ";
+		cin >> BeginNode;
+		cout << "End Node: ";
+		cin >> EndNode;
+	}*/
 }
 
+/*
+void CSVMake()
+{
+	ofstream myfile;
+	myfile.open("GUICSV.csv");
 
+	
+
+	for (int i = 0; i < Nodes.size(); i++)
+	{
+		string line = Nodes[i].NodeName;
+		for (int j = 0; j < Nodes[i].NodeList.size(); j++)
+		{
+			line += "," + Nodes[i].NodeList[j]->NodeName;
+		}
+
+		cout << line << endl;
+	}
+}
+*/

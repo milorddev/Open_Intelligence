@@ -1,8 +1,7 @@
 #include "../Headers/Node.h"
 
 
-
-Node::Node(string Title)
+/*Node::Node(string Title)
 {
 	NodeName = Title;
 }
@@ -10,4 +9,4 @@ Node::Node(string Title)
 string Node::getName()
 {
 	return NodeName;
-}
+}*/
