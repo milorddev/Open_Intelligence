@@ -1,7 +1,9 @@
 #ifndef LINUXPREPROS_H
 #define LINUXPREPROS_H
 
-#ifdef __linux__ 
+#ifdef __linux__
+
+#include<stdlib.h>
 
 
 
