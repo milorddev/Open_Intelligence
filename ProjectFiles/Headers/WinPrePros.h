@@ -7,13 +7,15 @@
 #include <stdlib.h>
 
 
-void PrintFullPath(char * partialPath)
+string PrintFullPath(char * partialPath)
 {
 	char full[_MAX_PATH];
-	if (_fullpath(full, partialPath, _MAX_PATH) != NULL)
-		printf("Full path is: %s\n", full);
-	else
-		printf("Invalid path\n");
+	if (_fullpath(full, partialPath, _MAX_PATH) == NULL)
+	{
+		cout << "invalid!" << endl;
+		return "nope";
+	}
+	return full;
 }
 
 

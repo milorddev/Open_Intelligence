@@ -32,7 +32,10 @@ int main()
 	}*/
 
 
-	PrintFullPath("../../../../../Python/Eyesight/Primitive_Eyesight.py");
+	cout << PrintFullPath("../../../../../Python/Eyesight/Primitive_Eyesight.py") << endl;
+	cout << PrintFullPath("../../../../../Python/Hearing/AmplitudeTest.py") << endl;
+
+
 
 
 

@@ -5,6 +5,12 @@
 
 
 
+string PrintFullPath(char * partialPath)
+{
+	char *real_path = realpath(partialPath, NULL);
+	return real_path;
+}
+
 
 
 
