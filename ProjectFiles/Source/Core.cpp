@@ -5,15 +5,15 @@ using namespace std;
 
 #include "../Headers/LinuxPrePros.h"
 #include "../Headers/WinPrePros.h"
-#include "C:/Python27/include/Python.h"
 
-
-
+#include <cstdio>
+#include <memory>
+#include <fstream>
 
 //prototypes
 void Commands(string cinresult);
 void GetCommand();
-int ThreadMain();
+void StreamInputData(bool EndInput);
 
 //variables
 vector<Node> Nodes;
@@ -25,26 +25,30 @@ bool EndLoop = false;
 
 int main(int argc, char *argv[])
 {
-	
-	/*while (!EndLoop)
-	{
-		getline(cin, cinresult);
-		Commands(cinresult);
-	}*/
-        
-    char* test = "../../../../../Python/Eyesight/Primitive_Eyesight.py";
-    char* test2 = "../../../../../Python/Hearing/AmplitudeTest.py";
-	cout << PrintFullPath(test) << endl;
-	cout << PrintFullPath(test2) << endl;
 
-	ThreadMain();
+	//char* test = "../../../../../Python/Eyesight/Primitive_Eyesight.py";
+	//char* test2 = "../../../../../Python/Hearing/AmplitudeTest.py";
+	string PrimEye = PrintFullPath("../../../../../Python/Eyesight/Primitive_Eyesight.py");
+	string AmpTest = PrintFullPath("../../../../../Python/Hearing/AmplitudeTest.py");
+
+	cout << PrimEye << endl;
+	cout << AmpTest << endl;
 
 
-	Py_SetProgramName(argv[0]);  /* optional but recommended */
-	Py_Initialize();
-	PyRun_SimpleString("from time import time,ctime\n"
-		"print 'Today is',ctime(time())\n");
-	Py_Finalize();
+	//Open both Python Codes
+#ifdef _WIN32
+	string command1 = "start pythonw.exe ";
+	command1 += "\"" + PrimEye + "\"";
+	system(command1.c_str());
+
+	string command2 = "start pythonw.exe ";
+	command2 += "\"" + AmpTest + "\"";
+	system(command2.c_str());
+#endif
+
+
+	StreamInputData(EndLoop);
+
 
 
 #ifdef _WIN32
@@ -55,7 +59,18 @@ int main(int argc, char *argv[])
 }
 
 
+void GetCommand()
+{
+	string cinresult;
+	while (!EndLoop)
+	{
+		cin >> cinresult;
+		Commands(cinresult);
+	}
+}
 
+
+//not really necessary
 void Commands(string cinresult)
 {
 	if (cinresult == "End" || cinresult == "end")
@@ -75,7 +90,7 @@ void Commands(string cinresult)
 			cout << Nodes[i].getName() << ", ";
 		}
 		cout << endl;
-		
+
 	}
 }
 

@@ -1,41 +1,85 @@
-#include<iostream>
-#include<stdio.h>
-#include "../Middleware/Windows/pthread/include/pthread.h"
+#include <thread>
+#include <memory>
+#include <fstream>
+#include <string>
+#include <iostream>
 
+using namespace std;
 
-void *inc_x(void *x_void_ptr){
+void GetCommand();
 
-  int *x_ptr = (int*) x_void_ptr;
-  while(++(*x_ptr) < 100);
-
-  printf("x increment finished\n");
-
-  return NULL;
-}
-
-int ThreadMain()
+void VisualStream(bool EndInput)
 {
-  int x = 0, y = 0;
+	ifstream VisualFile;
+	VisualFile.open("EyePrim_output.txt");
+	string visualline;
 
-  pthread_t inc_x_thread;
-
-  printf("x: %d, y: %d\n", x, y);
-
-  if(pthread_create(&inc_x_thread, NULL, inc_x, &x)){
-    fprintf(stderr, "Error creating thread\n");
-    return 1;
-  }
-
-  while(++y < 100);
-
-  printf("y increment finished\n");
-
-  if(pthread_join(inc_x_thread, NULL)){
-    fprintf(stderr, "Error joining thread\n");
-    return 2;
-  }
-  printf("x: %d, y: %d\n", x, y);
-
-  return 0;
+	if (VisualFile.is_open())
+	{
+		while (!EndInput)
+		{
+			//cout << "Visual Input" << endl;
+			if (VisualFile.eof())
+			{
+				VisualFile.clear();
+				VisualFile.seekg(0, ios::beg);
+			}
+		}
+		VisualFile.close();
+	}
+	else
+	{
+		cout << "File not found" << endl;
+	}
 }
+
+void AudioStream(bool EndInput)
+{
+	ifstream SoundFile;
+	SoundFile.open("Amp_output.txt");
+	string soundline;
+
+	if (SoundFile.is_open())
+	{
+		while (!EndInput)
+		{
+			getline(SoundFile, soundline);
+			//cout << "Sound Input: " << soundline << endl;
+			if (SoundFile.eof())
+			{
+				SoundFile.clear();
+				SoundFile.seekg(0, ios::beg);
+			}
+		}
+		SoundFile.close();
+	}
+	else
+	{
+		cout << "File not found" << endl;
+	}
+
+}
+
+
+
+void StreamInputData(bool EndInput)
+{
+	thread Thread1(AudioStream,EndInput);
+	thread Thread2(VisualStream,EndInput);
+	thread Thread3(GetCommand);
+
+
+	Thread1.join();
+	Thread2.join();
+	Thread3.join();
+}
+
+
+
+
+
+
+
+
+
 

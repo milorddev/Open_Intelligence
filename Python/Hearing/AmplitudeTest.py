@@ -25,7 +25,6 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
 
-
 INITIAL_TAP_THRESHOLD = 0.010
 FORMAT = pyaudio.paInt16 
 SHORT_NORMALIZE = (1.0/32768.0)
@@ -143,7 +142,8 @@ if __name__ == "__main__":
     CurrentPoint = [count,AmpValue*Mult]
     OldPoint = CurrentPoint
     
-
+    #open file and write to it
+    
     while not done:
             LinePlot = -1* tt.AmpValue + Bottom
             tt.listen()
@@ -157,7 +157,14 @@ if __name__ == "__main__":
                 pygame.draw.line(screen, WHITE, OldPoint, CurrentPoint, 1)
                 OldPoint = CurrentPoint
                 count += 1;
-                print tt.AmpValue
+                #print tt.AmpValue
+                target = open("C:\OpenIntelligence\Open_Intelligence\ProjectFiles\IDE\Visual_Studio_2013\OpenIntelligence\OpenIntelligence\Amp_output.txt",'w')
+                writeline = str(tt.AmpValue)
+                target.write(writeline)
+                target.write("\n")
+                target.close()
+                
+                
             else:
                 count = 0;
                 CurrentPoint = [count,LinePlot]
@@ -168,7 +175,7 @@ if __name__ == "__main__":
             pygame.draw.line(screen, WHITE, [0, Bottom], [640,Bottom], 2)
             pygame.draw.line(screen, WHITE, [0, Top], [640,Top], 2)
             pygame.display.update()
-
+    
     pygame.quit()
     sys.exit()
         
