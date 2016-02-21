@@ -30,10 +30,11 @@ int main()
 		getline(cin, cinresult);
 		Commands(cinresult);
 	}*/
-
-
-	cout << PrintFullPath("../../../../../Python/Eyesight/Primitive_Eyesight.py") << endl;
-	cout << PrintFullPath("../../../../../Python/Hearing/AmplitudeTest.py") << endl;
+        
+        char* test = "../../../../../Python/Eyesight/Primitive_Eyesight.py";
+        char* test2 = "../../../../../Python/Hearing/AmplitudeTest.py";
+	cout << PrintFullPath(test) << endl;
+	cout << PrintFullPath(test2) << endl;
 
 
 
