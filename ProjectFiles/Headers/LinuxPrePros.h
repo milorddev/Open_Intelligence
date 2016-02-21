@@ -5,6 +5,7 @@
 
 #include<stdlib.h>
 
+#include<pthread.h>
 
 
 string PrintFullPath(char * partialPath)

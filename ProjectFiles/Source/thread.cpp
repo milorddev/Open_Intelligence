@@ -1,6 +1,7 @@
 #include<iostream>
 #include<stdio.h>
-#include<pthread.h>
+#include "../Middleware/Windows/pthread/include/pthread.h"
+
 
 void *inc_x(void *x_void_ptr){
 
@@ -12,8 +13,8 @@ void *inc_x(void *x_void_ptr){
   return NULL;
 }
 
-int main(void){
-
+int ThreadMain()
+{
   int x = 0, y = 0;
 
   pthread_t inc_x_thread;

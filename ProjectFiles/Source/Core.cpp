@@ -5,7 +5,7 @@ using namespace std;
 
 #include "../Headers/LinuxPrePros.h"
 #include "../Headers/WinPrePros.h"
-
+#include "C:/Python27/include/Python.h"
 
 
 
@@ -13,6 +13,7 @@ using namespace std;
 //prototypes
 void Commands(string cinresult);
 void GetCommand();
+int ThreadMain();
 
 //variables
 vector<Node> Nodes;
@@ -22,7 +23,7 @@ bool EndLoop = false;
 
 
 
-int main()
+int main(int argc, char *argv[])
 {
 	
 	/*while (!EndLoop)
@@ -31,14 +32,19 @@ int main()
 		Commands(cinresult);
 	}*/
         
-        char* test = "../../../../../Python/Eyesight/Primitive_Eyesight.py";
-        char* test2 = "../../../../../Python/Hearing/AmplitudeTest.py";
+    char* test = "../../../../../Python/Eyesight/Primitive_Eyesight.py";
+    char* test2 = "../../../../../Python/Hearing/AmplitudeTest.py";
 	cout << PrintFullPath(test) << endl;
 	cout << PrintFullPath(test2) << endl;
 
+	ThreadMain();
 
 
-
+	Py_SetProgramName(argv[0]);  /* optional but recommended */
+	Py_Initialize();
+	PyRun_SimpleString("from time import time,ctime\n"
+		"print 'Today is',ctime(time())\n");
+	Py_Finalize();
 
 
 #ifdef _WIN32
