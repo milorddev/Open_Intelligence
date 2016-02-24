@@ -15,13 +15,14 @@ using namespace std;
 void Commands(string cinresult);
 void GetCommand();
 void StreamInputData(bool EndInput);
+void CSVMake();
 
 //variables
 vector<Node> Nodes;
 string cinresult;
 bool EndLoop = false;
 
-
+#define getname(x) #x
 
 
 int main(int argc, char *argv[])
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
 	cout << PrimEye << endl;
 	cout << AmpTest << endl;
 
-
+	/*
 	//Open both Python Codes
 #ifdef _WIN32
 	string command1 = "start pythonw.exe ";
@@ -46,6 +47,22 @@ int main(int argc, char *argv[])
 	command2 += "\"" + AmpTest + "\"";
 	system(command2.c_str());
 #endif
+	*/
+
+	Node animal("Animal");
+	Node dog("Dog");
+	Node cat("Cat");
+
+
+	dog.addLink(&cat);
+	dog.addLink(&animal);
+	
+	
+	Nodes.push_back(cat);
+	Nodes.push_back(dog);
+	Nodes.push_back(animal);
+	
+	CSVMake();
 
 
 	thread StreamThread(StreamInputData, EndLoop);
@@ -92,12 +109,12 @@ void Commands(string cinresult)
 		cout << "Name of Node: ";
 		cin >> nname;
 		Node temp;
-		temp.NodeName = nname;
+		temp.getName() = nname;
 		Nodes.push_back(temp);
 		cout << "List of node names: ";
 		for (int i = 0; i < Nodes.size(); i++)
 		{
-			cout << Nodes[i].NodeName << ", ";
+			cout << Nodes[i].getName() << ", ";
 		}
 		cout << endl;
 	}
@@ -110,23 +127,26 @@ void Commands(string cinresult)
 	}*/
 }
 
-/*
+
 void CSVMake()
 {
 	ofstream myfile;
 	myfile.open("GUICSV.csv");
 
 	
-
+	
 	for (int i = 0; i < Nodes.size(); i++)
 	{
-		string line = Nodes[i].NodeName;
-		for (int j = 0; j < Nodes[i].NodeList.size(); j++)
+		string line = Nodes[i].getName();
+		for (int j = 0; j < Nodes[i].getList().size(); j++)
 		{
-			line += "," + Nodes[i].NodeList[j]->NodeName;
+			line += "," + Nodes[i].getList()[j]->getName();
 		}
+		line += "\n";
 
-		cout << line << endl;
+		myfile << line;
 	}
+
+	myfile.close();
+	
 }
-*/

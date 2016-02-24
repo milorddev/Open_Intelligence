@@ -6,7 +6,7 @@
 
 using namespace std;
 
-bool TurnOnVisuals = true;
+bool TurnOnVisuals = false;
 
 void VisualStream(bool EndInput)
 {
