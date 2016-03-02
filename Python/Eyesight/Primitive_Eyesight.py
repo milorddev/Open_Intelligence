@@ -82,7 +82,9 @@ while(rval):
     x = x.reshape(480,640)
     print x
     '''
-
+    edgelist = edges.tolist()
+    print type(edgelist)
+    
     cv2.imshow('GreyScale',edges);
 
     

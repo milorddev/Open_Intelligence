@@ -36,13 +36,14 @@ int main(int argc, char *argv[])
 	cout << PrimEye << endl;
 	cout << AmpTest << endl;
 
-	/*
+	
 	//Open both Python Codes
 #ifdef _WIN32
 	string command1 = "start pythonw.exe ";
 	command1 += "\"" + PrimEye + "\"";
 	system(command1.c_str());
-
+#endif
+	/*
 	string command2 = "start pythonw.exe ";
 	command2 += "\"" + AmpTest + "\"";
 	system(command2.c_str());
